@@ -8,4 +8,7 @@ test("works", () => {
     baz"
   `);
   expect(config.QUX).toMatchInlineSnapshot(`undefined`);
+  expect(config.USER).toBeTruthy();
+  expect("FOO" in config).toEqual(true);
+  expect(Object.keys(config).length).toBeGreaterThanOrEqual(2);
 });

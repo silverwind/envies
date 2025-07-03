@@ -3,7 +3,7 @@
 
 > Zero-config .env parser
 
-No configuration, just import it and use it, files will be read once on-demand. Checks the following in the working directory and merges the result:
+No configuration, just import it and use it. Checks the following in the working directory (lowest to highest precedence):
 
 - `.default.env`
 - `.env`,

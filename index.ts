@@ -1,5 +1,6 @@
 import {readFileSync} from "node:fs";
 import {parseEnv} from "node:util";
+import {env} from "node:process";
 
 export type Config = Record<string, string | undefined>;
 
@@ -26,6 +27,10 @@ function init() {
         configObj[key] = value;
       }
     }
+  }
+
+  for (const [key, value] of Object.entries(env)) {
+    configObj[key] = value;
   }
   initDone = true;
 }
