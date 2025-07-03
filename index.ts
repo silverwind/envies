@@ -1,10 +1,12 @@
 import {readFileSync} from "node:fs";
 import {parseEnv} from "node:util";
 
-let initDone = false;
-const configObj: Record<string, string> = {};
+export type Config = Record<string, string | undefined>;
 
-export const config: Record<string, string> = new Proxy(configObj, {
+let initDone = false;
+const configObj: Config = {};
+
+export const config: Config = new Proxy(configObj, {
   get: (...args) => {
     if (!initDone) init();
     return Reflect.get(...args);
