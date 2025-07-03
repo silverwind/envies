@@ -32,5 +32,6 @@ function init() {
   for (const [key, value] of Object.entries(env)) {
     configObj[key] = value;
   }
+
   initDone = true;
 }
