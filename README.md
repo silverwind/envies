@@ -1,9 +1,13 @@
 # envies
 [![](https://img.shields.io/npm/v/envies.svg?style=flat)](https://www.npmjs.org/package/envies) [![](https://img.shields.io/npm/dm/envies.svg)](https://www.npmjs.org/package/envies) [![](https://packagephobia.com/badge?p=envies)](https://packagephobia.com/result?p=envies)
 
-> Zero-config .env file parser
+> Zero-config .env parser
 
-Just import it and use it, files will be read on-demand. Has a static list of files it checks in the working directory: `.default.env`, `.env`, `.env.local`.
+No configuration, just import it and use it, files will be read once on-demand. Checks the following in the working directory and merges the result:
+
+- `.default.env`
+- `.env`,
+- `.env.local`
 
 ## Usage
 ```console
@@ -11,7 +15,7 @@ npm i envies
 ```
 ```js
 import {config} from "envies";
-console.log(config.FOO);
+console.log(config.USER);
 ```
 
 © [silverwind](https://github.com/silverwind), distributed under BSD licence
