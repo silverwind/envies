@@ -6,7 +6,7 @@
 No configuration, just import it and use it. Checks the following in the working directory (lowest to highest precedence):
 
 - `.default.env`
-- `.env`,
+- `.env`
 - `.env.local`
 
 ## Usage
