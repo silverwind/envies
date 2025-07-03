@@ -18,7 +18,7 @@ export const config: Config = new Proxy(configObj, {
   }
 });
 
-function init() {
+function init(): void {
   for (const file of [".default.env", ".env", ".env.local"]) {
     let content: string | null = null;
     try { content = readFileSync(file, "utf8"); } catch {}
