@@ -1,14 +1,14 @@
-import {config} from "./index.ts";
+import {env} from "./index.ts";
 
 test("works", () => {
-  expect(config.FOO).toMatchInlineSnapshot(`"bar baz"`);
-  expect(config.BAR).toMatchInlineSnapshot(`
+  expect(env.FOO).toMatchInlineSnapshot(`"bar baz"`);
+  expect(env.BAR).toMatchInlineSnapshot(`
     "foo
     bar
     baz"
   `);
-  expect(config.QUX).toMatchInlineSnapshot(`undefined`);
-  expect(config.USER || config.USERNAME).toBeTruthy();
-  expect("FOO" in config).toEqual(true);
-  expect(Object.keys(config).length).toBeGreaterThanOrEqual(2);
+  expect(env.QUX).toMatchInlineSnapshot(`undefined`);
+  expect(env.USER || env.USERNAME).toBeTruthy();
+  expect("FOO" in env).toEqual(true);
+  expect(Object.keys(env).length).toBeGreaterThanOrEqual(2);
 });

@@ -14,8 +14,8 @@ No configuration, just import it and use it. Checks the following in the working
 npm i envies
 ```
 ```js
-import {config} from "envies";
-console.log(config.USER);
+import {env} from "envies";
+console.log(env.USER);
 ```
 
 © [silverwind](https://github.com/silverwind), distributed under BSD licence

@@ -1,13 +1,13 @@
 import {readFileSync} from "node:fs";
 import {parseEnv} from "node:util";
-import {env} from "node:process";
+import {env as processEnv} from "node:process";
 
-export type Config = Record<string, string | undefined>;
+export type EnviesEnv = Record<string, string | undefined>;
 
 let initDone = false;
-const configObj: Config = {};
+const envObject: EnviesEnv = {};
 
-export const config: Config = new Proxy(configObj, {
+export const env: EnviesEnv = new Proxy(envObject, {
   get: (...args) => {
     if (!initDone) init();
     return Reflect.get(...args);
@@ -24,13 +24,13 @@ function init(): void {
     try { content = readFileSync(file, "utf8"); } catch {}
     if (content) {
       for (const [key, value] of Object.entries(parseEnv(content))) {
-        configObj[key] = value;
+        envObject[key] = value;
       }
     }
   }
 
-  for (const [key, value] of Object.entries(env)) {
-    configObj[key] = value;
+  for (const [key, value] of Object.entries(processEnv)) {
+    envObject[key] = value;
   }
 
   initDone = true;
