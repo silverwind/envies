@@ -1,7 +1,7 @@
 {
   "name": "envies",
   "version": "2.0.1",
-  "description": ".env loader",
+  "description": " Teeny tiny .env loader",
   "author": "silverwind <me@silverwind.io>",
   "repository": "silverwind/envies",
   "license": "BSD-2-Clause",

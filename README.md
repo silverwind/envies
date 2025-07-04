@@ -1,7 +1,7 @@
 # envies
 [![](https://img.shields.io/npm/v/envies.svg?style=flat)](https://www.npmjs.org/package/envies) [![](https://img.shields.io/npm/dm/envies.svg)](https://www.npmjs.org/package/envies) [![](https://packagephobia.com/badge?p=envies)](https://packagephobia.com/result?p=envies)
 
-> .env loader
+>  Teeny tiny .env loader
 
 No configuration, just import it and use the variables. It loads variables from the following in the working directory (lowest to highest precedence):
 
