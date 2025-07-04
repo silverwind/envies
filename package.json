@@ -1,7 +1,7 @@
 {
   "name": "envies",
   "version": "2.0.0",
-  "description": "Zero-config .env parser",
+  "description": ".env loader",
   "author": "silverwind <me@silverwind.io>",
   "repository": "silverwind/envies",
   "license": "BSD-2-Clause",
