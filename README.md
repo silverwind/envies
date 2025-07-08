@@ -3,7 +3,7 @@
 
 >  Teeny tiny .env loader
 
-No configuration, just import it and use the variables. It loads variables from the following in the working directory (lowest to highest precedence):
+No initialization, just import it and use the variables. It loads variables from the following files in the working directory (lowest to highest precedence):
 
 - `.default.env`
 - `.env`
