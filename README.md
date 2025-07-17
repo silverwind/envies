@@ -3,13 +3,17 @@
 
 >  Teeny tiny .env loader
 
-No initialization, just import it and use the variables. It loads variables from the following files in the working directory (lowest to highest precedence):
+No initialization, just import it and use the variables. It loads variables in ascending precedence from the following sources:
 
-- `.default.env`
-- `.env`
-- `.env.local`
+- `.default.env` in the script directory
+- `.default.env` in the working directory
+- `.env` in the script directory
+- `.env` in the working directory
+- `.env.local` in the script directory
+- `.env.local` in the working directory
+- The current environment variables
 
-Variables are loaded once when properties on `env` are first accessed.
+Variables are loaded only once when properties on `env` are first accessed.
 
 ## Usage
 ```js
