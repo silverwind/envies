@@ -1,4 +1,4 @@
-import {readFileSync} from "node:fs";
+import {readFileSync, realpathSync} from "node:fs";
 import {parseEnv} from "node:util";
 import {env as processEnv, argv, cwd} from "node:process";
 import {dirname, join} from "node:path";
@@ -20,7 +20,7 @@ export const env: EnviesEnv = new Proxy(envObject, {
 });
 
 function init(): void {
-  const scriptDir = dirname(argv[1]);
+  const scriptDir = dirname(realpathSync(argv[1]));
   const workingDir = cwd();
 
   const files = [".default.env", ".env", ".env.local"].flatMap(file => {
