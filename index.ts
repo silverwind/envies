@@ -23,9 +23,9 @@ function init(): void {
   const scriptDir = dirname(realpathSync(argv[1]));
   const workingDir = cwd();
 
-  const files = [".default.env", ".env", ".env.local"].flatMap(file => {
+  const files = new Set<string>(([".default.env", ".env", ".env.local"].flatMap(file => {
     return [join(scriptDir, file), join(workingDir, file)];
-  });
+  })));
 
   for (const file of files) {
     let content: string | null = null;
