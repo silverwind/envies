@@ -13,7 +13,7 @@ No initialization, just import it and use the variables. It loads variables in a
 - `.env.local` in the working directory
 - The current environment variables
 
-Variables are loaded only once when properties on `env` are first accessed.
+Variables are loaded only once when properties on `env` are first accessed. The script directory is determined from `process.argv[1]`.
 
 ## Usage
 ```js
