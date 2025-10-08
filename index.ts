@@ -6,7 +6,7 @@ import {dirname, join} from "node:path";
 export type EnviesEnv = Record<string, string | undefined>;
 
 let initDone = false;
-const envObject: EnviesEnv = {};
+const envObject: EnviesEnv = Object.create(null);
 
 export const env: EnviesEnv = new Proxy(envObject, {
   get: (...args) => {
