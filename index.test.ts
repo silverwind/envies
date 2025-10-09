@@ -15,7 +15,7 @@ test("works", () => {
 });
 
 test("writing", () => {
-  env.WRITE = "write"
-  expect(env.WRITE).toEqual("write")
-  expect(processEnv.WRITE).toEqual("write")
+  env.WRITE = "write";
+  expect(env.WRITE).toEqual("write");
+  expect(processEnv.WRITE).toEqual("write");
 });
