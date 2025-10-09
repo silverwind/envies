@@ -18,7 +18,11 @@ export const env: EnviesEnv = new Proxy(envObject, {
     // also set on process.env in case external code relies on it
     Reflect.set(processEnv, key, value);
     return Reflect.set(target, key, value, receiver);
-  }
+  },
+  has: (...args) => {
+    if (!initDone) init();
+    return Reflect.has(...args);
+  },
 });
 
 function init(): void {
