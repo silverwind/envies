@@ -13,9 +13,11 @@ export const env: EnviesEnv = new Proxy(envObject, {
     if (!initDone) init();
     return Reflect.get(...args);
   },
-  set: (...args) => {
+  set: (target, key, value, receiver) => {
     if (!initDone) init();
-    return Reflect.set(...args);
+    // also set on process.env in case external code relies on it
+    Reflect.set(processEnv, key, value);
+    return Reflect.set(target, key, value, receiver);
   }
 });
 
