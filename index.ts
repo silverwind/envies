@@ -25,23 +25,27 @@ export const env: EnviesEnv = new Proxy(envObject, {
   },
 });
 
-function init(): void {
-  const scriptDir = dirname(realpathSync(argv[1]));
+export function loadEnv(files: Array<string>, dir: string): EnviesEnv {
+  const obj: EnviesEnv = Object.create(null);
   const workingDir = cwd();
 
-  const files = new Set<string>(([".default.env", ".env", ".env.local"].flatMap(file => {
-    return [join(scriptDir, file), join(workingDir, file)];
-  })));
-
-  for (const file of files) {
+  for (const file of (new Set((files.flatMap(file => [join(dir, file), join(workingDir, file)]))))) {
     let content: string | null = null;
     try { content = readFileSync(file, "utf8"); } catch {}
     if (content) {
       for (const [key, value] of Object.entries(parseEnv(content))) {
-        envObject[key] = value;
+        obj[key] = value;
       }
     }
   }
+
+  return obj;
+}
+
+function init(): void {
+  const scriptDir = dirname(realpathSync(argv[1]));
+  const sourceFiles = [".default.env", ".env", ".env.local"];
+  Object.assign(envObject, loadEnv(sourceFiles, scriptDir));
 
   for (const [key, value] of Object.entries(processEnv)) {
     envObject[key] = value;
