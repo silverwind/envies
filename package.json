@@ -20,7 +20,7 @@
     "@types/node": "24.9.2",
     "eslint": "9.38.0",
     "eslint-config-silverwind": "110.0.0",
-    "tsdown": "0.15.11",
+    "tsdown": "0.15.12",
     "tsdown-config-silverwind": "1.4.0",
     "typescript-config-silverwind": "12.0.0",
     "updates": "16.9.1",
