@@ -3,7 +3,16 @@
 
 >  Teeny tiny .env loader
 
-No initialization, just import it and use the variables. It loads variables in ascending precedence from the following sources:
+## Usage
+
+```js
+import {env} from "envies";
+console.log(env.USER);
+```
+
+## Details
+
+It loads variables in ascending precedence from the following sources:
 
 - `.default.env` in the script directory
 - `.default.env` in the working directory
@@ -13,12 +22,10 @@ No initialization, just import it and use the variables. It loads variables in a
 - `.env.local` in the working directory
 - The current environment variables
 
-Variables are loaded only once when properties on `env` are first accessed. The script directory is determined from `process.argv[1]`.
+### Notes
 
-## Usage
-```js
-import {env} from "envies";
-console.log(env.USER);
-```
+- Variables are loaded on-demand once when properties on `env` are first accessed
+- The script directory is determined from `process.argv[1]`
+- To change the default source filenames, set `ENVIES_SOURCES=.example.env,.env` in the environment.
 
 © [silverwind](https://github.com/silverwind), distributed under BSD licence
