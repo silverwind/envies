@@ -44,11 +44,10 @@ export function loadEnv(files: Array<string>, dir: string): EnviesEnv {
 
 function init(): void {
   const scriptDir = dirname(realpathSync(argv[1]));
+  const sourceFiles = processEnv.ENVIES_SOURCES?.length ?
+    processEnv.ENVIES_SOURCES.split(",") :
+    [".default.env", ".env", ".env.local"];
 
-  let sourceFiles = [".default.env", ".env", ".env.local"];
-  if (processEnv.ENVIES_SOURCES?.length) {
-    sourceFiles = processEnv.ENVIES_SOURCES.split(",");
-  }
   Object.assign(envObject, loadEnv(sourceFiles, scriptDir));
 
   for (const [key, value] of Object.entries(processEnv)) {
