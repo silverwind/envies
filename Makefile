@@ -11,12 +11,12 @@ deps: node_modules
 .PHONY: lint
 lint: node_modules
 	pnpm exec eslint --color .
-	pnpm exec tsc
+	pnpm exec tsgo
 
 .PHONY: lint-fix
 lint-fix: node_modules
 	pnpm exec eslint --color . --fix
-	pnpm exec tsc
+	pnpm exec tsgo
 
 .PHONY: test
 test: node_modules
@@ -41,7 +41,7 @@ update: node_modules
 
 .PHONY: publish
 publish: node_modules
-	pnpm publish
+	pnpm publish --no-git-checks
 
 .PHONY: patch
 patch: node_modules lint test

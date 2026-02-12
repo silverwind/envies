@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@types/node": "24.10.1",
+    "@typescript/native-preview": "7.0.0-dev.20260212.1",
     "eslint": "9.39.2",
     "eslint-config-silverwind": "120.1.2",
     "jest-extended": "7.0.0",
@@ -27,6 +28,7 @@
     "typescript": "5.9.3",
     "typescript-config-silverwind": "13.0.2",
     "updates": "16.9.1",
+    "updates-config-silverwind": "1.0.3",
     "versions": "14.0.2",
     "vitest": "4.0.10",
     "vitest-config-silverwind": "10.4.2"
