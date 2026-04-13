@@ -28,4 +28,17 @@ It loads variables in ascending precedence from the following sources:
 - The script directory is determined from `process.argv[1]`
 - To change the default source filenames, set `ENVIES_SOURCES=.example.env,.env` in the environment.
 
+### TypeScript
+
+By default, `env` is typed as `Record<string, string | undefined>`. If you know specific variables will always be set, you can narrow their types via an ambient declaration (e.g. in `types.d.ts`):
+
+```ts
+declare module "envies" {
+  export const env: {
+    DATABASE_URL: string;
+    API_TOKEN: string;
+  };
+}
+```
+
 © [silverwind](https://github.com/silverwind), distributed under BSD licence
