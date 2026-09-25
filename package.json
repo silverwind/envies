@@ -3,7 +3,10 @@
   "version": "3.0.0",
   "description": " Teeny tiny .env loader",
   "author": "silverwind <me@silverwind.io>",
-  "repository": "silverwind/envies",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silverwind/envies.git"
+  },
   "license": "BSD-2-Clause",
   "type": "module",
   "sideEffects": false,
