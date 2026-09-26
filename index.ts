@@ -23,6 +23,18 @@ export const env: EnviesEnv = new Proxy(envObject, {
     if (!initDone) init();
     return Reflect.has(...args);
   },
+  ownKeys: (...args) => {
+    if (!initDone) init();
+    return Reflect.ownKeys(...args);
+  },
+  getOwnPropertyDescriptor: (...args) => {
+    if (!initDone) init();
+    return Reflect.getOwnPropertyDescriptor(...args);
+  },
+  deleteProperty: (...args) => {
+    if (!initDone) init();
+    return Reflect.deleteProperty(...args);
+  },
 });
 
 export function loadEnv(files: Array<string>, dir: string): EnviesEnv {
