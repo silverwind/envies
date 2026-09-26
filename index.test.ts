@@ -1,5 +1,5 @@
 import {env, type EnviesEnv} from "./index.ts";
-import {env as processEnv} from "node:process";
+import {argv, env as processEnv} from "node:process";
 
 const freshModule = (id: string) => import(/* @vite-ignore */ `./index.ts?${id}`) as Promise<{env: EnviesEnv}>;
 
@@ -19,6 +19,15 @@ test("works", async () => {
   const {env: deleteEnv} = await freshModule("delete");
   delete deleteEnv.FOO;
   expect(deleteEnv.FOO).toBeUndefined();
+  const savedArgv = [...argv];
+  try {
+    argv[1] = "/nonexistent/script";
+    expect((await freshModule("missing-script")).env.FOO).toEqual("bar baz");
+    argv.length = 1;
+    expect((await freshModule("no-script")).env.FOO).toEqual("bar baz");
+  } finally {
+    argv.splice(0, argv.length, ...savedArgv);
+  }
 });
 
 test("writing", () => {

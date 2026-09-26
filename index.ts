@@ -52,13 +52,21 @@ export function loadEnv(files: Array<string>, dir: string): EnviesEnv {
   return obj;
 }
 
+function getScriptDir(): string {
+  if (!argv[1]) return cwd();
+  try {
+    return dirname(realpathSync(argv[1]));
+  } catch {
+    return dirname(argv[1]);
+  }
+}
+
 function init(): void {
-  const scriptDir = dirname(realpathSync(argv[1]));
   const sourceFiles = processEnv.ENVIES_SOURCES ?
     processEnv.ENVIES_SOURCES.split(",") :
     [".default.env", ".env", ".env.local"];
 
-  Object.assign(envObject, loadEnv(sourceFiles, scriptDir));
+  Object.assign(envObject, loadEnv(sourceFiles, getScriptDir()));
 
   for (const [key, value] of Object.entries(processEnv)) {
     envObject[key] = value;

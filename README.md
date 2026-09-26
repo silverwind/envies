@@ -29,7 +29,7 @@ It loads variables in ascending precedence from the following sources:
 ### Notes
 
 - Variables are loaded on-demand once when properties on `env` are first accessed
-- The script directory is determined from `process.argv[1]`
+- The script directory is determined from `process.argv[1]`, without it only the working directory is used
 - To change the default source filenames, set `ENVIES_SOURCES=.example.env,.env` in the environment.
 
 ### TypeScript
