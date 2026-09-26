@@ -29,13 +29,11 @@ export function loadEnv(files: Array<string>, dir: string): EnviesEnv {
   const obj: EnviesEnv = Object.create(null);
   const workingDir = cwd();
 
-  for (const file of (new Set((files.flatMap(file => [join(dir, file), join(workingDir, file)]))))) {
-    let content: string | null = null;
-    try { content = readFileSync(file, "utf8"); } catch {}
-    if (content) {
-      for (const [key, value] of Object.entries(parseEnv(content))) {
-        obj[key] = value;
-      }
+  for (const file of new Set(files.flatMap(file => [join(dir, file), join(workingDir, file)]))) {
+    let content: string;
+    try { content = readFileSync(file, "utf8"); } catch { continue; }
+    for (const [key, value] of Object.entries(parseEnv(content))) {
+      obj[key] = value;
     }
   }
 
@@ -44,7 +42,7 @@ export function loadEnv(files: Array<string>, dir: string): EnviesEnv {
 
 function init(): void {
   const scriptDir = dirname(realpathSync(argv[1]));
-  const sourceFiles = processEnv.ENVIES_SOURCES?.length ?
+  const sourceFiles = processEnv.ENVIES_SOURCES ?
     processEnv.ENVIES_SOURCES.split(",") :
     [".default.env", ".env", ".env.local"];
 
