@@ -4,13 +4,7 @@ import {argv, env as processEnv} from "node:process";
 const freshModule = (id: string) => import(/* @vite-ignore */ `./index.ts?${id}`) as Promise<{env: EnviesEnv}>;
 
 test("works", async () => {
-  expect(env.FOO).toMatchInlineSnapshot(`"bar baz"`);
-  expect(env.BAR).toMatchInlineSnapshot(`
-    "foo
-    bar
-    baz"
-  `);
-  expect(env.QUX).toMatchInlineSnapshot(`undefined`);
+  expect([env.FOO, env.BAR, env.QUX]).toEqual(["bar baz", "foo\nbar\nbaz", undefined]);
   expect(env.USER || env.USERNAME).toBeTruthy();
   expect("FOO" in env).toEqual(true);
   expect(Object.keys(env).length).toBeGreaterThanOrEqual(2);
